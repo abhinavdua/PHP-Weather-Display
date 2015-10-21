@@ -5,6 +5,9 @@
         Forecast
     </title>
     <script>
+        function res(){
+            document.getElementById("inp").reset();
+        }
         function validate() {
             var address = document.getElementById("address").value;
             var city = document.getElementById("city").value;
@@ -56,7 +59,7 @@
 ?>
         <div style="margin-left: 500px;">
             <h2>Forecast Search</h2>
-            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
+            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" id="inp">
                 <table frame="box" style="text-align: center;">
                     <tr>
                         <td>
@@ -81,57 +84,57 @@
                         <td>
                             <select id="state" name="state">
                                 <option value="" selected disabled>Select your option</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="CT">Connecticut</option>
-                                <option value="DE">Delaware</option>
-                                <option value="DC">District Of Columbia</option>
-                                <option value="FL">Florida</option>
-                                <option value="GA">Georgia</option>
-                                <option value="HI">Hawaii</option>
-                                <option value="ID">Idaho</option>
-                                <option value="IL">Illinois</option>
-                                <option value="IN">Indiana</option>
-                                <option value="IA">Iowa</option>
-                                <option value="KS">Kansas</option>
-                                <option value="KY">Kentucky</option>
-                                <option value="LA">Louisiana</option>
-                                <option value="ME">Maine</option>
-                                <option value="MD">Maryland</option>
-                                <option value="MA">Massachusetts</option>
-                                <option value="MI">Michigan</option>
-                                <option value="MN">Minnesota</option>
-                                <option value="MS">Mississippi</option>
-                                <option value="MO">Missouri</option>
-                                <option value="MT">Montana</option>
-                                <option value="NE">Nebraska</option>
-                                <option value="NV">Nevada</option>
-                                <option value="NH">New Hampshire</option>
-                                <option value="NJ">New Jersey</option>
-                                <option value="NM">New Mexico</option>
-                                <option value="NY">New York</option>
-                                <option value="NC">North Carolina</option>
-                                <option value="ND">North Dakota</option>
-                                <option value="OH">Ohio</option>
-                                <option value="OK">Oklahoma</option>
-                                <option value="OR">Oregon</option>
-                                <option value="PA">Pennsylvania</option>
-                                <option value="RI">Rhode Island</option>
-                                <option value="SC">South Carolina</option>
-                                <option value="SD">South Dakota</option>
-                                <option value="TN">Tennessee</option>
-                                <option value="TX">Texas</option>
-                                <option value="UT">Utah</option>
-                                <option value="VT">Vermont</option>
-                                <option value="VA">Virginia</option>
-                                <option value="WA">Washington</option>
-                                <option value="WV">West Virginia</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
+                <option value="AL" <?php echo isset($_POST['state']) && $_POST['state'] == "AL" ? "selected" : ''?>>Alabama</option>
+                <option value="AK" <?php echo isset($_POST['state']) && $_POST['state'] == "AK" ? "selected" : ''?>>Alaska</option>
+                <option value="AZ" <?php echo isset($_POST['state']) && $_POST['state'] == "AZ" ? "selected" : ''?>>Arizona</option>
+                <option value="AR" <?php echo isset($_POST['state']) && $_POST['state'] == "AR" ? "selected" : ''?>>Arkansas</option>
+                <option value="CA" <?php echo isset($_POST['state']) && $_POST['state'] == "CA" ? "selected" : ''?>>California</option>
+                <option value="CO" <?php echo isset($_POST['state']) && $_POST['state'] == "CO" ? "selected" : ''?>>Colorado</option>
+                <option value="CT" <?php echo isset($_POST['state']) && $_POST['state'] == "CT" ? "selected" : ''?>>Connecticut</option>
+                <option value="DE" <?php echo isset($_POST['state']) && $_POST['state'] == "DE" ? "selected" : ''?>>Delaware</option>
+                <option value="DC" <?php echo isset($_POST['state']) && $_POST['state'] == "DC" ? "selected" : ''?>>District Of Columbia</option>
+                <option value="FL" <?php echo isset($_POST['state']) && $_POST['state'] == "FL" ? "selected" : ''?>>Florida</option>
+                <option value="GA" <?php echo isset($_POST['state']) && $_POST['state'] == "GA" ? "selected" : ''?>>Georgia</option>
+                <option value="HI" <?php echo isset($_POST['state']) && $_POST['state'] == "HI" ? "selected" : ''?>>Hawaii</option>
+                <option value="ID" <?php echo isset($_POST['state']) && $_POST['state'] == "ID" ? "selected" : ''?>>Idaho</option>
+                <option value="IL" <?php echo isset($_POST['state']) && $_POST['state'] == "IL" ? "selected" : ''?>>Illinois</option>
+                <option value="IN" <?php echo isset($_POST['state']) && $_POST['state'] == "IN" ? "selected" : ''?>>Indiana</option>
+                <option value="IA" <?php echo isset($_POST['state']) && $_POST['state'] == "IA" ? "selected" : ''?>>Iowa</option>
+                <option value="KS" <?php echo isset($_POST['state']) && $_POST['state'] == "KS" ? "selected" : ''?>>Kansas</option>
+                <option value="KY" <?php echo isset($_POST['state']) && $_POST['state'] == "KY" ? "selected" : ''?>>Kentucky</option>
+                <option value="LA" <?php echo isset($_POST['state']) && $_POST['state'] == "LA" ? "selected" : ''?>>Louisiana</option>
+                <option value="ME" <?php echo isset($_POST['state']) && $_POST['state'] == "ME" ? "selected" : ''?>>Maine</option>
+                <option value="MD" <?php echo isset($_POST['state']) && $_POST['state'] == "MD" ? "selected" : ''?>>Maryland</option>
+                <option value="MA" <?php echo isset($_POST['state']) && $_POST['state'] == "MA" ? "selected" : ''?>>Massachusetts</option>
+                <option value="MI" <?php echo isset($_POST['state']) && $_POST['state'] == "MI" ? "selected" : ''?>>Michigan</option>
+                <option value="MN" <?php echo isset($_POST['state']) && $_POST['state'] == "MN" ? "selected" : ''?>>Minnesota</option>
+                <option value="MS" <?php echo isset($_POST['state']) && $_POST['state'] == "MS" ? "selected" : ''?>>Mississippi</option>
+                <option value="MO" <?php echo isset($_POST['state']) && $_POST['state'] == "MO" ? "selected" : ''?>>Missouri</option>
+                <option value="MT" <?php echo isset($_POST['state']) && $_POST['state'] == "MT" ? "selected" : ''?>>Montana</option>
+                <option value="NE" <?php echo isset($_POST['state']) && $_POST['state'] == "NE" ? "selected" : ''?>>Nebraska</option>
+                <option value="NV" <?php echo isset($_POST['state']) && $_POST['state'] == "NV" ? "selected" : ''?>>Nevada</option>
+                <option value="NH" <?php echo isset($_POST['state']) && $_POST['state'] == "NH" ? "selected" : ''?>>New Hampshire</option>
+                <option value="NJ" <?php echo isset($_POST['state']) && $_POST['state'] == "NJ" ? "selected" : ''?>>New Jersey</option>
+                <option value="NM" <?php echo isset($_POST['state']) && $_POST['state'] == "NM" ? "selected" : ''?>>New Mexico</option>
+                <option value="NY" <?php echo isset($_POST['state']) && $_POST['state'] == "NY" ? "selected" : ''?>>New York</option>
+                <option value="NC" <?php echo isset($_POST['state']) && $_POST['state'] == "NC" ? "selected" : ''?>>North Carolina</option>
+                <option value="ND" <?php echo isset($_POST['state']) && $_POST['state'] == "ND" ? "selected" : ''?>>North Dakota</option>
+                <option value="OH" <?php echo isset($_POST['state']) && $_POST['state'] == "OH" ? "selected" : ''?>>Ohio</option>
+                <option value="OK" <?php echo isset($_POST['state']) && $_POST['state'] == "OK" ? "selected" : ''?>>Oklahoma</option>
+                <option value="OR" <?php echo isset($_POST['state']) && $_POST['state'] == "OR" ? "selected" : ''?>>Oregon</option>
+                <option value="PA" <?php echo isset($_POST['state']) && $_POST['state'] == "PA" ? "selected" : ''?>>Pennsylvania</option>
+                <option value="RI" <?php echo isset($_POST['state']) && $_POST['state'] == "RI" ? "selected" : ''?>>Rhode Island</option>
+                <option value="SC" <?php echo isset($_POST['state']) && $_POST['state'] == "SC" ? "selected" : ''?>>South Carolina</option>
+                <option value="SD" <?php echo isset($_POST['state']) && $_POST['state'] == "SD" ? "selected" : ''?>>South Dakota</option>
+                <option value="TN" <?php echo isset($_POST['state']) && $_POST['state'] == "TN" ? "selected" : ''?>>Tennessee</option>
+                <option value="TX" <?php echo isset($_POST['state']) && $_POST['state'] == "TX" ? "selected" : ''?>>Texas</option>
+                <option value="UT" <?php echo isset($_POST['state']) && $_POST['state'] == "UT" ? "selected" : ''?>>Utah</option>
+                <option value="VT" <?php echo isset($_POST['state']) && $_POST['state'] == "VT" ? "selected" : ''?>>Vermont</option>
+                <option value="VA" <?php echo isset($_POST['state']) && $_POST['state'] == "VA" ? "selected" : ''?>>Virginia</option>
+                <option value="WA" <?php echo isset($_POST['state']) && $_POST['state'] == "WA" ? "selected" : ''?>>Washington</option>
+                <option value="WV" <?php echo isset($_POST['state']) && $_POST['state'] == "WV" ? "selected" : ''?>>West Virginia</option>
+                <option value="WI" <?php echo isset($_POST['state']) && $_POST['state'] == "WI" ? "selected" : ''?>>Wisconsin</option>
+                <option value="WY" <?php echo isset($_POST['state']) && $_POST['state'] == "WY" ? "selected" : ''?>>Wyoming</option>
                             </select>
                         </td>
                     </tr>
@@ -140,16 +143,15 @@
                             Degree
                         </td>
                         <td>
-                            <?php echo isset($_POST['degree']) ? $_POST['myField1'] : '' ?>
-                            <input type="radio" name="degree" value="F" <?php if($_POST['degree'] == "F") { echo 'checked="checked"';} elseif (!isset($_POST["submit"])) { echo 'checked="checked"';} ?>> Fahrenheit
-                            <input type="radio" name="degree" value="C" <?php if($_POST['degree'] == "C") { echo 'checked="checked"';} ?>> Celsius
+                            <input type="radio" name="degree" value="F" <?php if (isset($_POST['degree']) and ($_POST['degree'] == "F")) { echo 'checked="checked"';} elseif (!isset($_POST["submit"])) { echo 'checked="checked"';} ?>> Fahrenheit
+                            <input type="radio" name="degree" value="C" <?php if (isset($_POST['degree']) and($_POST['degree'] == "C")) { echo 'checked="checked"';} ?>> Celsius
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
                             <input type="submit" name="submit" onclick="validate()" value="Search">
-                            <button type="reset" value="Reset">Clear</button>
+                            <button type="button" onclick="res()">Clear</button>
                         </td>
                     </tr>
                     <tr>
@@ -169,59 +171,86 @@
     
         <?php 
     if(isset($_POST["submit"])) { 
-    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxx";
+    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxxxxxx";
     $maps_response = new SimpleXMLElement(file_get_contents($map_url));
     $lat = (string) $maps_response->result[0]->geometry[0]->location[0]->lat;
     $lng = (string) $maps_response->result[0]->geometry[0]->location[0]->lng;
-    $api_key = "xxxxxxxxxxx";
+    $api_key = "xxxxxxxxxxxx";
     if ($_POST["degree"] == "C"){
         $units = "si";
     }
     else {
         $units = "us";
     }
+    if ($units == "us") {
+        $windspeed_unit = "mph";
+        $visibility_unit = "mi";
+    }
+    else {
+        $windspeed_unit = "mts/sec";
+        $visibility_unit = "km";
+    }
     $forecast_url = "https://api.forecast.io/forecast/". $api_key. "/". $lat. "," . $lng . "?units=" . $units . "&exclude=flags";
-    $resp = json_decode(file_get_contents($forecast_url), true);
-    $icon = $resp["currently"]["icon"];
-    $img = array(
-        "clear-day" => "clear.png",
-        "clear-night" => "clear_night.png",
-        "rain" => "rain.png",
-        "snow" => "snow.png",
-        "sleet" => "sleet.png",
-        "wind" => "wind.png",
-        "fog" => "fog.png",
-        "cloudy" => "cloudy.png",
-        "partly-cloudy-day" => "cloud_day.png",
-        "partly-cloudy-night" => "cloud_night.png"
-    );
-    $summary = $resp["currently"]["summary"];
-    $temp = $resp["currently"]["temperature"];
-    if ($img[$icon]) {
-        $img_url = "http://cs-server.usc.edu:45678/hw/hw6/images/" . $img[$icon];
-    }    
-    }
-    $precip = array(
-        "0" => "None",
-        "0.002" => "Very Light",
-        "0.017" => "Light",
-        "0.1" => "Moderate",
-        "0.4" => "Heavy"
-    );
-    $resp_precip = (string)$resp["currently"]["precipIntensity"];
-    if ($precip[$resp_precip]) {
-        $precipitation = $precip[$resp_precip];
-    }
-    $rain_chance = $resp["currently"]["precipProbability"] * 100 . "%";
-    $wind_speed = $resp["currently"]["windSpeed"] . "mph";
-    $dew = $resp["currently"]["dewPoint"];
-    $humidity = $resp["currently"]["humidity"] * 100 . "%";
-    $visibility = $resp["currently"]["visibility"] . "mi";
+    
+    if(!isset($resp)){
+        $resp = json_decode(file_get_contents($forecast_url), true);
+        $icon = $resp["currently"]["icon"];
+        $img = array(
+            "clear-day" => "clear.png",
+            "clear-night" => "clear_night.png",
+            "rain" => "rain.png",
+            "snow" => "snow.png",
+            "sleet" => "sleet.png",
+            "wind" => "wind.png",
+            "fog" => "fog.png",
+            "cloudy" => "cloudy.png",
+            "partly-cloudy-day" => "cloud_day.png",
+            "partly-cloudy-night" => "cloud_night.png"
+        );
+        $summary = $resp["currently"]["summary"];
+        $temp = $resp["currently"]["temperature"];
+        if ($img[$icon]) {
+            $img_url = "http://cs-server.usc.edu:45678/hw/hw6/images/" . $img[$icon];
+        }    
+        }
+        $precip = null;
+        $resp_precip = null;
+        $resp_precip = $resp["currently"]["precipIntensity"];
+        if ($resp_precip >=0 and $resp_precip<0.002) {
+            $precipitation = "None";
+        }
+        if ($resp_precip >=0.002 and $resp_precip<0.017) {
+            $precipitation = "Very Light";
+        }
+        if ($resp_precip >=0.017 and $resp_precip<0.1) {
+            $precipitation = "Light";
+        }
+        if ($resp_precip >=0.1 and $resp_precip<0.4) {
+            $precipitation = "Moderate";
+        }
+        if ($resp_precip >=0.4) {
+            $precipitation = "Heavy";
+        }
+
+        $rain_chance = null;
+        $wind_speed = null;
+        $dew = null;
+        $humidity = null;
+        $visibility = null;
+        $sunrise_time = null;
+        $sunset_time = null;
+
+        $rain_chance = $resp["currently"]["precipProbability"] * 100 . "%";
+        $wind_speed = $resp["currently"]["windSpeed"] . "mph";
+        $dew = $resp["currently"]["dewPoint"];
+        $humidity = $resp["currently"]["humidity"] * 100 . "%";
+        $visibility = $resp["currently"]["visibility"] . "mi";
 
 
-    date_default_timezone_set($resp["timezone"]);
-    $sunrise_time = date('h:i:s A', $resp["daily"]["data"][0]["sunriseTime"]);
-    $sunset_time = date('h:i:s A', $resp["daily"]["data"][0]["sunsetTime"]);
+        date_default_timezone_set($resp["timezone"]);
+        $sunrise_time = date('h:i A', $resp["daily"]["data"][0]["sunriseTime"]);
+        $sunset_time = date('h:i A', $resp["daily"]["data"][0]["sunsetTime"]);
+    }
         ?>
     <?php 
         if(!isset($_POST["submit"])) {
@@ -239,17 +268,17 @@
                             <strong>
                             <?php 
                                 if($units == "us") {
-                                    ?><?= $temp ?>&#8457<?php
+                                    ?><?= floor($temp) ?>&#8457<?php
                                 }
                                 else {
-                                    ?><?= $temp ?>&#8451<?php
+                                    ?><?= floor($temp) ?>&#8451<?php
                                 }?>
                 
                         </strong>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><img src=<?=$img_url ?>></td>
+                        <td colspan="2"><img src=<?=$img_url ?> title=<?=$icon ?>></td>
                     </tr>
                     <tr>
                         <td>Precipitation</td>
@@ -266,13 +295,13 @@
                     <tr>
                         <td>Wind Speed</td>
                         <td>
-                            <?= $wind_speed ?>
+                            <?= floor($wind_speed) . $windspeed_unit?> 
                         </td>
                     </tr>
                     <tr>
                         <td>Dew Point</td>
                         <td>
-                            <?= $dew ?>
+                            <?= floor($dew) ?>
                         </td>
                     </tr>
                     <tr>
@@ -284,7 +313,7 @@
                     <tr>
                         <td>Visibility</td>
                         <td>
-                            <?= $visibility ?>
+                            <?= floor($visibility) . $visibility_unit?> 
                         </td>
                     </tr>
                     <tr>
