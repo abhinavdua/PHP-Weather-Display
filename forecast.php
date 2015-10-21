@@ -170,11 +170,11 @@
     
         <?php 
     if(isset($_POST["submit"])) { 
-    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxx";
+    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxxxx";
     $maps_response = new SimpleXMLElement(file_get_contents($map_url));
     $lat = (string) $maps_response->result[0]->geometry[0]->location[0]->lat;
     $lng = (string) $maps_response->result[0]->geometry[0]->location[0]->lng;
-    $api_key = "xxxxxxxxxx";
+    $api_key = "xxxxxxxx";
     if ($_POST["degree"] == "C"){
         $units = "si";
     }
@@ -258,12 +258,12 @@
         else {
             ?> <div id="results" style="display:block;"><?php
         }?>
-                <table frame="box" style="text-align: center; margin-left:auto;margin-right:auto;">
+                <table frame="box" style="margin: 30px auto 30px auto;padding: 30px 0 30px 0;">
                     <tr>
-                        <td colspan="2" style="padding: 0 200px 0 200px;"><strong><?= $summary ?></strong></td>
+                        <td colspan="2" style="padding: 0 200px 0 200px; text-align: center;font-size: 25px;"><strong><?= $summary ?></strong></td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="padding: 0 200px 0 200px;">
+                        <td colspan="2" style="padding: 0 200px 0 200px;text-align: center;font-size: 25px;">
                             <strong>
                             <?php 
                                 if($units == "us") {
@@ -277,28 +277,28 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" style="padding: 0 200px 0 200px;"><img src=<?=$img_url ?> title=<?=$icon ?>></td>
+                        <td colspan="2" style="padding: 0 200px 0 200px; text-align: center; "><img src=<?=$img_url ?> title=<?=$icon ?>></td>
                     </tr>
                     <tr>
-                        <td>Precipitation</td>
+                        <td style="padding: 0 90px 0 90px;">Precipitation</td>
                         <td>
                             <?= $precipitation ?>
                         </td>
                     </tr>
                     <tr>
-                        <td>Chance of rain</td>
+                        <td style="padding: 0 90px 0 90px;">Chance of rain</td>
                         <td>
                             <?= $rain_chance ?>
                         </td>
                     </tr>
                     <tr>
-                        <td>Wind Speed</td>
+                        <td style="padding: 0 90px 0 90px;">Wind Speed</td>
                         <td>
                             <?= round($wind_speed) . $windspeed_unit?> 
                         </td>
                     </tr>
                     <tr>
-                        <td>Dew Point</td>
+                        <td style="padding: 0 90px 0 90px;">Dew Point</td>
                         <td>
                             <?php 
                                 if($units == "us") {
@@ -310,25 +310,25 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Humidity</td>
+                        <td style="padding: 0 90px 0 90px;">Humidity</td>
                         <td>
                             <?= $humidity ?>
                         </td>
                     </tr>
                     <tr>
-                        <td>Visibility</td>
+                        <td style="padding: 0 90px 0 90px;">Visibility</td>
                         <td>
                             <?= round($visibility) . $visibility_unit?> 
                         </td>
                     </tr>
                     <tr>
-                        <td>Sunrise</td>
+                        <td style="padding: 0 90px 0 90px;">Sunrise</td>
                         <td>
                             <?= $sunrise_time ?>
                         </td>
                     </tr>
                     <tr>
-                        <td>Sunset</td>
+                        <td style="padding: 0 90px 0 90px;">Sunset</td>
                         <td>
                             <?= $sunset_time ?>
                         </td>
