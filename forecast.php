@@ -1,12 +1,24 @@
 <html>
-
 <head>
     <title>
         Forecast
     </title>
     <script>
-        function res(){
-            document.getElementById("inp").reset();
+        function res(ele){
+            document.getElementById("results").innerHTML = "";
+            tags = ele.getElementsByTagName('input');
+            for(i = 0; i < tags.length; i++) {
+                if (tags[i].type == "text"){
+                    tags[i].value = "";
+                }
+                if (tags[i].type == "radio" && tags[i].value == "F"){
+                    tags[i].checked = true;
+                }
+            }
+            sel = ele.getElementsByTagName('select');
+            for(j = 0; j < sel["state"].options.length; j++) {
+                sel["state"].selectedIndex = 0;
+            }
         }
         function validate() {
             var address = document.getElementById("address").value;
@@ -35,20 +47,6 @@
             if (error_text != "Please enter the following missing information: ") {
                 alert(error_text);
             }
-            //else {
-              //  showResults();
-            //}
-        }
-        function showResults() {
-            
-            //console.log("Came here");
-            //console.log(displayRes);
-            if (document.getElementById("results").style.display == "none") {
-                alert("Came here");
-                document.getElementById("results").style.display = "block";
-            }
-            console.log("Changed value");
-            console.log(document.getElementById("results").style.display);
         }
     </script>
 </head>
@@ -57,10 +55,11 @@
     <?php 
         date_default_timezone_set('Europe/Bucharest');
 ?>
-        <div style="margin-left: 500px;">
-            <h2>Forecast Search</h2>
-            <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" id="inp">
-                <table frame="box" style="text-align: center;">
+        
+            <h2 style="text-align: center;">Forecast Search</h2>
+    <div id="wrapper">        
+    <form action="<?=$_SERVER['PHP_SELF'];?>" method="post" id="inp">
+                <table frame="box" style="text-align: center;margin-left:auto; margin-right:auto;">
                     <tr>
                         <td>
                             Street Address
@@ -74,7 +73,7 @@
                             City
                         </td>
                         <td>
-                            <input name="city" id="city" type="text" value="<?php echo isset($_POST['city']) ? $_POST['city'] : '' ?>">
+                            <input name="city" id="city" type="text" value="<?php echo isset($_POST['city']) ? $_POST['city'] : "" ?>">
                         </td>
                     </tr>
                     <tr>
@@ -151,7 +150,7 @@
                         <td></td>
                         <td>
                             <input type="submit" name="submit" onclick="validate()" value="Search">
-                            <button type="button" onclick="res()">Clear</button>
+                            <input type="button" onclick="res(this.form)" name="clear" value="Clear">
                         </td>
                     </tr>
                     <tr>
@@ -171,11 +170,11 @@
     
         <?php 
     if(isset($_POST["submit"])) { 
-    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxxxxxx";
+    $map_url = "https://maps.googleapis.com/maps/api/geocode/xml?address=" . rawurlencode($_POST["address"]). ",".                              rawurlencode($_POST["city"]).",". rawurlencode($_POST["state"]) . "&key=xxxxxxx";
     $maps_response = new SimpleXMLElement(file_get_contents($map_url));
     $lat = (string) $maps_response->result[0]->geometry[0]->location[0]->lat;
     $lng = (string) $maps_response->result[0]->geometry[0]->location[0]->lng;
-    $api_key = "xxxxxxxxxxxx";
+    $api_key = "xxxxxxxxxx";
     if ($_POST["degree"] == "C"){
         $units = "si";
     }
@@ -254,31 +253,31 @@
         ?>
     <?php 
         if(!isset($_POST["submit"])) {
-            ?> <div id="results" style="margin-left: 40%; display:none;"> <?php
+            ?> <div id="results" style="display:none;"> <?php
         }
         else {
-            ?> <div id="results" style="margin-left: 40%; display:block;"><?php
+            ?> <div id="results" style="display:block;"><?php
         }?>
-                <table frame="box" style="text-align: center;">
+                <table frame="box" style="text-align: center; margin-left:auto;margin-right:auto;">
                     <tr>
-                        <td colspan="2"><strong><?= $summary ?></strong></td>
+                        <td colspan="2" style="padding: 0 200px 0 200px;"><strong><?= $summary ?></strong></td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" style="padding: 0 200px 0 200px;">
                             <strong>
                             <?php 
                                 if($units == "us") {
-                                    ?><?= floor($temp) ?>&#8457<?php
+                                    ?><?= round($temp) ?>&#8457<?php
                                 }
                                 else {
-                                    ?><?= floor($temp) ?>&#8451<?php
+                                    ?><?= round($temp) ?>&#8451<?php
                                 }?>
                 
                         </strong>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><img src=<?=$img_url ?> title=<?=$icon ?>></td>
+                        <td colspan="2" style="padding: 0 200px 0 200px;"><img src=<?=$img_url ?> title=<?=$icon ?>></td>
                     </tr>
                     <tr>
                         <td>Precipitation</td>
@@ -295,13 +294,19 @@
                     <tr>
                         <td>Wind Speed</td>
                         <td>
-                            <?= floor($wind_speed) . $windspeed_unit?> 
+                            <?= round($wind_speed) . $windspeed_unit?> 
                         </td>
                     </tr>
                     <tr>
                         <td>Dew Point</td>
                         <td>
-                            <?= floor($dew) ?>
+                            <?php 
+                                if($units == "us") {
+                                    ?><?= round($dew) ?>&#8457<?php
+                                }
+                                else {
+                                    ?><?= round($dew) ?>&#8451<?php
+                                }?>
                         </td>
                     </tr>
                     <tr>
@@ -313,7 +318,7 @@
                     <tr>
                         <td>Visibility</td>
                         <td>
-                            <?= floor($visibility) . $visibility_unit?> 
+                            <?= round($visibility) . $visibility_unit?> 
                         </td>
                     </tr>
                     <tr>
